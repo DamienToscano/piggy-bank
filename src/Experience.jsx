@@ -1,9 +1,12 @@
-import { Stage, OrbitControls, RoundedBox, useGLTF, PresentationControls } from "@react-three/drei";
+import { Stage, OrbitControls, RoundedBox, useGLTF, PresentationControls, Clone, Float } from "@react-three/drei";
 import { InstancedRigidBodies, Physics, RigidBody } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import * as THREE from "three";
 
 export default function Experience() {
+
+    // TODO: Mettre les crédits pour le modèle https://sketchfab.com/3d-models/piggy-bank-d4387ba82d8f4dda85826ee5815640b9 avec le CC license
 
     return <>
         {/* <Perf position="top-left" /> */}
@@ -24,6 +27,7 @@ export default function Experience() {
                 shadows={false}
                 environment={"sunset"}
             >
+                <Clouds />
                 <Physics>
                     <Coins />
                     <PiggyBank />
@@ -31,6 +35,67 @@ export default function Experience() {
                 </Physics>
             </Stage>
         </PresentationControls>
+    </>
+}
+
+function Clouds() {
+
+    const cloud = useGLTF("./cloud.glb");
+    const floatSpeed = 0.5;
+
+    return <>
+        {/* <Float speed={floatSpeed}>
+            <Clone
+                object={cloud.scene}
+                position={[-1, 11, -6]}
+                scale={0.4}
+            />
+        </Float> */}
+        <Float speed={floatSpeed}>
+            <Clone
+                object={cloud.scene}
+                position={[3, 8, -6]}
+                scale={[1, 1, 1]}
+            />
+        </Float>
+        <Float speed={floatSpeed}>
+            <Clone
+                object={cloud.scene}
+                position={[-2, 4, -6]}
+                scale={1.2}
+            />
+        </Float>
+        <Float speed={floatSpeed}>
+            <Clone
+                object={cloud.scene}
+                position={[3, 2, -6]}
+                scale={0.5}
+            />
+        </Float>
+        <Float speed={floatSpeed}>
+            <Clone
+                object={cloud.scene}
+                position={[-6, 6, 0]}
+                rotation-y={Math.PI / 2}
+                scale={[2, 1, 1]}
+            />
+        </Float>
+        <Float speed={floatSpeed}>
+            <Clone
+                object={cloud.scene}
+                position={[-6, 8, -4]}
+                rotation-y={Math.PI / 2}
+                scale={0.6}
+            />
+        </Float>
+        <Float speed={floatSpeed}>
+            <Clone
+                object={cloud.scene}
+                position={[-6, 2, 3]}
+                rotation-y={Math.PI / 2}
+                scale={0.9}
+            />
+        </Float>
     </>
 }
 
