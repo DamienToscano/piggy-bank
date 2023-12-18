@@ -11,3 +11,32 @@ body,
 canvas {
     touch-action: none;
 }
+
+footer {
+    margin: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.credit-container {
+    padding: 10px 30px;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.credit-button {
+    background-color: white;
+    color: gray;
+    border-radius: 5px;
+    font-size: medium;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid gray;
+}
+
+.credit-button:hover {
+    background-color: lightgray;
+    color: black;
+}
